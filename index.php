@@ -676,6 +676,58 @@ padding:32px 20px;
 
 }
 
+@media(max-width:768px){
+
+.nav{
+height:72px;
+gap:12px;
+}
+
+.logo{
+font-size:24px;
+line-height:1;
+white-space:nowrap;
+max-width:180px;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+header .btn{
+padding:11px 18px;
+font-size:13px;
+white-space:nowrap;
+}
+
+.hero{
+padding-top:120px;
+}
+
+.hero h1{
+font-size:39px;
+line-height:1.08;
+}
+
+.hero p{
+font-size:17px;
+line-height:1.7;
+}
+
+}
+
+@media(max-width:420px){
+
+.logo{
+font-size:22px;
+max-width:145px;
+}
+
+header .btn{
+padding:10px 16px;
+font-size:12px;
+}
+
+}
+
 </style>
 </head>
 
