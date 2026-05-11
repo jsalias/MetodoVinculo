@@ -504,43 +504,60 @@ padding:35px 25px;
 
 /* ===== RESPONSIVE CELULAR ===== */
 
+/* =========================
+RESPONSIVE MOBILE DEFINITIVO
+========================= */
+
 @media(max-width:768px){
 
 body{
 overflow-x:hidden;
 }
 
-.container{
-padding:0 18px;
-}
-
-.section{
-padding:70px 0;
-}
+/* HEADER */
 
 header{
-position:fixed;
+padding:0;
 }
 
 .nav{
-height:72px;
+height:82px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:0 20px;
 }
 
+/* LOGO */
+
 .logo{
-font-size:28px;
+font-size:26px;
+line-height:1;
+white-space:nowrap;
+flex-shrink:0;
 }
+
+/* MENU */
 
 .menu{
 display:none;
 }
 
+/* BOTON HEADER */
+
 header .btn{
-padding:12px 18px;
-font-size:12px;
+padding:12px 22px;
+font-size:14px;
+border-radius:100px;
+white-space:nowrap;
+flex-shrink:0;
 }
 
+/* HERO */
+
 .hero{
-padding-top:110px;
+padding-top:120px;
 padding-bottom:70px;
 }
 
@@ -554,41 +571,180 @@ gap:45px;
 }
 
 .hero h1{
-font-size:42px;
+font-size:58px;
+line-height:1.05;
+letter-spacing:-1px;
+margin-bottom:25px;
 }
 
-.hero p,
-.lead,
-.intro p,
-.contact p{
-font-size:16px;
+.hero p{
+font-size:18px;
+line-height:1.8;
+margin-bottom:30px;
 }
 
 .hero-actions{
 flex-direction:column;
+gap:18px;
 }
 
 .hero-actions .btn{
 width:100%;
 }
 
+/* IMAGENES */
+
 .hero-image,
 .image-box,
 .coming-soon{
-height:420px;
-border-radius:28px;
+height:430px;
+border-radius:30px;
+overflow:hidden;
 }
+
+/* FLOATING CARD */
 
 .floating-card{
-left:18px;
-right:18px;
-bottom:-35px;
-max-width:none;
-padding:22px;
+position:relative;
+left:auto;
+bottom:auto;
+margin-top:20px;
+max-width:100%;
 }
 
-.floating-card h3{
+/* TITULOS */
+
+.intro h2,
+.section-title h2,
+.contact h2,
+.course h2,
+.about h2,
+.certification h2{
+font-size:48px;
+line-height:1.1;
+}
+
+/* TEXTOS */
+
+.intro p,
+.contact p,
+.lead{
+font-size:17px;
+line-height:1.8;
+}
+
+/* CARDS */
+
+.cards{
+margin-top:40px;
+}
+
+.card{
+padding:28px;
+border-radius:25px;
+}
+
+.card h3{
 font-size:30px;
+}
+
+/* FOOTER */
+
+.footer-content{
+flex-direction:column;
+text-align:center;
+}
+
+/* MODAL */
+
+.modal-content{
+padding:35px 24px;
+border-radius:30px;
+}
+
+.modal-content h2{
+font-size:42px;
+}
+
+.modal-form input,
+.modal-form textarea{
+padding:16px;
+font-size:15px;
+}
+
+}
+
+/* =========================
+MOBILE PEQUEÑO
+========================= */
+
+@media(max-width:480px){
+
+.container{
+padding:0 20px;
+}
+
+/* LOGO */
+
+.logo{
+font-size:24px;
+}
+
+/* BOTON */
+
+header .btn{
+padding:11px 18px;
+font-size:13px;
+}
+
+/* HERO */
+
+.hero h1{
+font-size:52px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+/* TITULOS */
+
+.intro h2,
+.section-title h2,
+.contact h2,
+.course h2,
+.about h2,
+.certification h2{
+font-size:42px;
+}
+
+/* IMAGENES */
+
+.hero-image,
+.image-box,
+.coming-soon{
+height:380px;
+}
+
+}
+
+/* =========================
+SAMSUNG A53 / 390px
+========================= */
+
+@media(max-width:390px){
+
+.logo{
+font-size:22px;
+}
+
+header .btn{
+padding:10px 16px;
+font-size:12px;
+}
+
+.hero h1{
+font-size:46px;
 }
 
 .intro h2,
@@ -598,132 +754,6 @@ font-size:30px;
 .about h2,
 .certification h2{
 font-size:38px;
-}
-
-.cards{
-margin-top:45px;
-}
-
-.card{
-padding:28px;
-}
-
-.card h3{
-font-size:30px;
-}
-
-.contact .btn,
-.course .btn,
-.certification .btn{
-width:100%;
-}
-
-.footer-content{
-flex-direction:column;
-text-align:center;
-}
-
-.modal-content{
-padding:35px 24px;
-border-radius:28px;
-}
-
-.modal-content h2{
-font-size:40px;
-}
-
-.modal-form input,
-.modal-form textarea{
-font-size:14px;
-padding:15px;
-}
-
-}
-
-@media(max-width:480px){
-
-.logo{
-font-size:24px;
-}
-
-header .btn{
-padding:10px 14px;
-font-size:11px;
-}
-
-.hero h1{
-font-size:36px;
-}
-
-.hero-image,
-.image-box,
-.coming-soon{
-height:340px;
-}
-
-.intro h2,
-.section-title h2,
-.contact h2,
-.course h2,
-.about h2,
-.certification h2{
-font-size:34px;
-}
-
-.modal-content{
-padding:32px 20px;
-}
-
-}
-
-@media(max-width:768px){
-
-.nav{
-height:72px;
-gap:12px;
-}
-
-.logo{
-font-size:24px;
-line-height:1;
-white-space:nowrap;
-max-width:180px;
-overflow:hidden;
-text-overflow:ellipsis;
-}
-
-header .btn{
-padding:11px 18px;
-font-size:13px;
-white-space:nowrap;
-}
-
-.hero{
-padding-top:120px;
-}
-
-.hero h1{
-font-size:39px;
-line-height:1.08;
-}
-
-.hero p{
-font-size:17px;
-line-height:1.7;
-}
-
-}
-
-@media(max-width:420px){
-
-.logo{
-font-size:22px;
-max-width:145px;
-}
-
-header .btn{
-padding:10px 16px;
-font-size:12px;
 }
 
 }
@@ -907,7 +937,9 @@ Método Vínculo® nace de años de experiencia acompañando a embarazadas, mam�
 <div class="container certification-grid">
 
 <div class="coming-soon fade">
-<img src="certificacion1.png" alt="">
+<video autoplay muted loop playsinline>
+<source src="CertificadoVideo.mp4" type="video/mp4">
+</video>
 </div>
 
 <div class="fade">
