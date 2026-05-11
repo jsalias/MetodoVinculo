@@ -1,0 +1,1025 @@
+<?php
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Método Vínculo®</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--bg:#FAF8F4;
+--cream:#F5EFE6;
+--beige:#D8C3A5;
+--brown:#A47551;
+--dark:#4A3528;
+--text:#6B5547;
+--white:#ffffff;
+--border:#E8DCCF;
+--shadow:0 15px 40px rgba(74,53,40,0.08);
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:var(--bg);
+color:var(--dark);
+line-height:1.7;
+}
+
+h1,h2,h3,h4{
+font-family:'Cormorant Garamond',serif;
+font-weight:500;
+line-height:1.1;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 24px;
+}
+
+.section{
+padding:110px 0;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:16px 30px;
+border-radius:100px;
+background:var(--brown);
+color:var(--white);
+font-size:14px;
+font-weight:500;
+transition:.3s;
+border:none;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#8d6546;
+transform:translateY(-2px);
+}
+
+.btn-outline{
+background:transparent;
+border:1px solid var(--brown);
+color:var(--brown);
+}
+
+.btn-outline:hover{
+background:var(--brown);
+color:white;
+}
+
+.eyebrow{
+text-transform:uppercase;
+letter-spacing:.3em;
+font-size:11px;
+font-weight:600;
+color:var(--brown);
+margin-bottom:20px;
+}
+
+header{
+position:fixed;
+width:100%;
+top:0;
+left:0;
+background:rgba(250,248,244,.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--border);
+z-index:1000;
+}
+
+.nav{
+height:85px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-family:'Cormorant Garamond',serif;
+font-size:34px;
+}
+
+.menu{
+display:flex;
+gap:40px;
+font-size:14px;
+color:var(--text);
+}
+
+.hero{
+padding-top:150px;
+padding-bottom:120px;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
+}
+
+.hero h1{
+font-size:78px;
+margin-bottom:30px;
+}
+
+.hero p{
+font-size:19px;
+color:var(--text);
+margin-bottom:35px;
+}
+
+.hero-actions{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.hero-media{
+position:relative;
+}
+
+.hero-image{
+height:720px;
+border-radius:40px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+
+.hero-image video,
+.hero-image img,
+.image-box img,
+.coming-soon img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.floating-card{
+position:absolute;
+bottom:-30px;
+left:-30px;
+background:white;
+padding:30px;
+border-radius:28px;
+box-shadow:var(--shadow);
+max-width:320px;
+}
+
+.floating-card span{
+font-size:13px;
+color:var(--text);
+display:block;
+margin-bottom:6px;
+}
+
+.floating-card h3{
+font-size:38px;
+}
+
+.intro{
+background:var(--cream);
+text-align:center;
+}
+
+.intro h2,
+.section-title h2,
+.contact h2{
+font-size:62px;
+max-width:900px;
+margin:auto;
+margin-bottom:30px;
+}
+
+.intro p,
+.contact p{
+max-width:780px;
+margin:auto;
+font-size:18px;
+color:var(--text);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+margin-top:70px;
+}
+
+.card{
+background:white;
+border:1px solid var(--border);
+padding:35px;
+border-radius:30px;
+box-shadow:var(--shadow);
+}
+
+.card-number{
+font-size:14px;
+color:var(--brown);
+margin-bottom:15px;
+}
+
+.card h3{
+font-size:34px;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:15px;
+color:var(--text);
+}
+
+.section-title{
+text-align:center;
+}
+
+.course{
+background:#ead9cc;
+}
+
+.course-grid,
+.about-grid,
+.certification-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.course h2,
+.about h2,
+.certification h2{
+font-size:70px;
+margin-bottom:25px;
+}
+
+.lead{
+font-size:19px;
+color:var(--text);
+margin-bottom:35px;
+}
+
+.checks{
+margin-bottom:40px;
+}
+
+.check{
+display:flex;
+gap:14px;
+margin-bottom:16px;
+font-size:15px;
+}
+
+.check span{
+color:var(--brown);
+font-weight:700;
+}
+
+.image-box{
+height:620px;
+border-radius:40px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+
+.about{
+background:var(--cream);
+}
+
+.quote{
+margin-top:40px;
+padding:30px;
+border-left:2px solid var(--brown);
+background:white;
+border-radius:20px;
+font-size:20px;
+font-family:'Cormorant Garamond',serif;
+}
+
+.certification{
+background:var(--cream);
+}
+
+.coming-soon{
+height:580px;
+border-radius:40px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+
+.contact{
+text-align:center;
+}
+
+footer{
+background:var(--dark);
+color:white;
+padding:45px 0;
+}
+
+.footer-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:30px;
+}
+
+.footer-content p{
+font-size:14px;
+opacity:.7;
+}
+
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:all .8s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MODAL */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+padding:20px;
+}
+
+.modal.show{
+display:flex;
+}
+
+.modal-content{
+background:white;
+width:100%;
+max-width:550px;
+padding:45px;
+border-radius:35px;
+position:relative;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.modal-content h2{
+font-size:52px;
+margin-bottom:20px;
+}
+
+.cerrar-modal{
+position:absolute;
+top:20px;
+right:20px;
+background:none;
+border:none;
+font-size:35px;
+cursor:pointer;
+color:var(--brown);
+}
+
+.modal-form{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.modal-form input,
+.modal-form textarea{
+width:100%;
+padding:18px;
+border-radius:18px;
+border:1px solid var(--border);
+font-family:'Montserrat',sans-serif;
+font-size:15px;
+outline:none;
+}
+
+.modal-form textarea{
+height:140px;
+resize:none;
+}
+
+.success{
+background:#dff5e3;
+color:#2c6b3f;
+padding:16px;
+border-radius:18px;
+margin-bottom:25px;
+font-size:14px;
+}
+
+@media(max-width:1000px){
+
+.hero-grid,
+.course-grid,
+.about-grid,
+.certification-grid,
+.cards{
+grid-template-columns:1fr 1fr;
+}
+
+.hero h1{
+font-size:60px;
+}
+
+}
+
+@media(max-width:768px){
+
+.menu{
+display:none;
+}
+
+.hero-grid,
+.course-grid,
+.about-grid,
+.certification-grid,
+.cards{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.hero-image,
+.image-box,
+.coming-soon{
+height:450px;
+}
+
+.footer-content{
+flex-direction:column;
+text-align:center;
+}
+
+.modal-content{
+padding:35px 25px;
+}
+
+}
+
+/* ===== RESPONSIVE CELULAR ===== */
+
+@media(max-width:768px){
+
+body{
+overflow-x:hidden;
+}
+
+.container{
+padding:0 18px;
+}
+
+.section{
+padding:70px 0;
+}
+
+header{
+position:fixed;
+}
+
+.nav{
+height:72px;
+}
+
+.logo{
+font-size:28px;
+}
+
+.menu{
+display:none;
+}
+
+header .btn{
+padding:12px 18px;
+font-size:12px;
+}
+
+.hero{
+padding-top:110px;
+padding-bottom:70px;
+}
+
+.hero-grid,
+.course-grid,
+.about-grid,
+.certification-grid,
+.cards{
+grid-template-columns:1fr;
+gap:45px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p,
+.lead,
+.intro p,
+.contact p{
+font-size:16px;
+}
+
+.hero-actions{
+flex-direction:column;
+}
+
+.hero-actions .btn{
+width:100%;
+}
+
+.hero-image,
+.image-box,
+.coming-soon{
+height:420px;
+border-radius:28px;
+}
+
+.floating-card{
+left:18px;
+right:18px;
+bottom:-35px;
+max-width:none;
+padding:22px;
+}
+
+.floating-card h3{
+font-size:30px;
+}
+
+.intro h2,
+.section-title h2,
+.contact h2,
+.course h2,
+.about h2,
+.certification h2{
+font-size:38px;
+}
+
+.cards{
+margin-top:45px;
+}
+
+.card{
+padding:28px;
+}
+
+.card h3{
+font-size:30px;
+}
+
+.contact .btn,
+.course .btn,
+.certification .btn{
+width:100%;
+}
+
+.footer-content{
+flex-direction:column;
+text-align:center;
+}
+
+.modal-content{
+padding:35px 24px;
+border-radius:28px;
+}
+
+.modal-content h2{
+font-size:40px;
+}
+
+.modal-form input,
+.modal-form textarea{
+font-size:14px;
+padding:15px;
+}
+
+}
+
+@media(max-width:480px){
+
+.logo{
+font-size:24px;
+}
+
+header .btn{
+padding:10px 14px;
+font-size:11px;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+.hero-image,
+.image-box,
+.coming-soon{
+height:340px;
+}
+
+.intro h2,
+.section-title h2,
+.contact h2,
+.course h2,
+.about h2,
+.certification h2{
+font-size:34px;
+}
+
+.modal-content{
+padding:32px 20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<div class="logo">Método Vínculo®</div>
+
+<nav class="menu">
+<a href="#metodo">El método</a>
+<a href="#curso">Curso</a>
+<a href="#sobre">Sobre mí</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<button class="btn" id="abrirModal">
+Contactar
+</button>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+<div class="fade">
+
+<div class="eyebrow">
+Bienestar maternal
+</div>
+
+<h1>
+Calma, conexión y bienestar desde el tacto consciente.
+</h1>
+
+<p>
+Método Vínculo® acompaña a mamás, embarazadas y bebés a través del masaje, la reflexología y el tacto consciente.
+</p>
+
+<div class="hero-actions">
+<button class="btn" id="abrirModal2">
+Descubrir Calma y Vínculo
+</button>
+
+<a href="#metodo" class="btn btn-outline">
+Conocer el método
+</a>
+</div>
+
+</div>
+
+<div class="hero-media fade">
+
+<div class="hero-image">
+
+<video autoplay muted loop playsinline>
+<source src="videobebe1.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<div class="floating-card">
+<span>Primer curso</span>
+<h3>Calma y Vínculo</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section intro" id="metodo">
+
+<div class="container fade">
+
+<div class="eyebrow">
+El método
+</div>
+
+<h2>
+Una forma de acompañar la maternidad desde el cuerpo y la calma.
+</h2>
+
+<p>
+Método Vínculo® nace desde el masaje, la reflexología y el tacto consciente.
+</p>
+
+</div>
+
+</section>
+
+<section class="section course" id="curso">
+
+<div class="container course-grid">
+
+<div class="fade">
+
+<div class="eyebrow">
+Primer curso
+</div>
+
+<h2>
+Calma y Vínculo
+</h2>
+
+<p class="lead">
+Bienestar y tacto consciente para mamá y bebé.
+</p>
+
+<div class="checks">
+
+<div class="check"><span>✓</span> Tacto consciente</div>
+<div class="check"><span>✓</span> Técnicas de calma</div>
+<div class="check"><span>✓</span> Sueño y relajación</div>
+<div class="check"><span>✓</span> Bienestar emocional</div>
+
+</div>
+
+<button class="btn" id="abrirModal3">
+Quiero saber más
+</button>
+
+</div>
+
+<div class="image-box fade">
+<img src="masajemama.png" alt="">
+</div>
+
+</div>
+
+</section>
+
+<section class="section about" id="sobre">
+
+<div class="container about-grid">
+
+<div class="image-box fade">
+<img src="creadora.png" alt="">
+</div>
+
+<div class="fade">
+
+<div class="eyebrow">
+Sobre mí
+</div>
+
+<h2>
+El tacto también acompaña.
+</h2>
+
+<p class="lead">
+Hola! Soy <strong>Cintia Ceunick</strong>.
+</p>
+
+<p>
+Método Vínculo® nace de años de experiencia acompañando a embarazadas, mamás y bebés desde el masaje, la reflexología y el tacto consciente.
+</p>
+
+<div class="quote">
+“Conectar también es aprender a pausar.”
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section certification">
+
+<div class="container certification-grid">
+
+<div class="coming-soon fade">
+<img src="certificacion1.png" alt="">
+</div>
+
+<div class="fade">
+
+<div class="eyebrow">
+Línea profesional
+</div>
+
+<h2>
+Especialización en Bienestar Maternal.
+</h2>
+
+<p class="lead">
+Formación para profesionales del bienestar maternal.
+</p>
+
+<button class="btn btn-outline" id="abrirModal4">
+Lista de interés
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section contact" id="contacto">
+
+<div class="container fade">
+
+<div class="eyebrow">
+Contacto
+</div>
+
+<h2>
+Empezá a crear calma desde el tacto.
+</h2>
+
+<p>
+Método Vínculo® está naciendo como un espacio para mamás y bebés.
+</p>
+
+<br><br>
+
+<button class="btn" id="abrirModal5">
+Contactar
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container footer-content">
+
+<div>
+<div class="logo">Método Vínculo®</div>
+<p>Calma y bienestar desde el tacto consciente.</p>
+</div>
+
+<p>
+© 2026 Método Vínculo®
+</p>
+
+</div>
+
+</footer>
+
+<!-- MODAL -->
+
+<div class="modal" id="modalContacto">
+
+<div class="modal-content">
+
+<button class="cerrar-modal" id="cerrarModal">
+×
+</button>
+
+<div class="eyebrow">
+Contacto
+</div>
+
+<h2>
+Escribinos
+</h2>
+
+<?php if(isset($_GET['ok'])): ?>
+
+<div class="success">
+Mensaje enviado correctamente.
+</div>
+
+<?php endif; ?>
+
+<form action="guardar_contacto.php" method="POST" class="modal-form">
+
+<input type="text" name="nombre" placeholder="Tu nombre" required>
+
+<input type="email" name="email" placeholder="Tu email" required>
+
+<input type="text" name="telefono" placeholder="Tu teléfono">
+
+<textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+<button class="btn" type="submit">
+Enviar consulta
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+const elements = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+
+});
+
+},{threshold:0.15});
+
+elements.forEach(el=>observer.observe(el));
+
+const modal = document.getElementById('modalContacto');
+
+const botones = [
+document.getElementById('abrirModal'),
+document.getElementById('abrirModal2'),
+document.getElementById('abrirModal3'),
+document.getElementById('abrirModal4'),
+document.getElementById('abrirModal5')
+];
+
+botones.forEach(btn => {
+
+btn.addEventListener('click', () => {
+modal.classList.add('show');
+});
+
+});
+
+document.getElementById('cerrarModal').addEventListener('click', () => {
+modal.classList.remove('show');
+});
+
+modal.addEventListener('click', (e) => {
+
+if(e.target === modal){
+modal.classList.remove('show');
+}
+
+});
+
+</script>
+
+</body>
+</html>
