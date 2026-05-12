@@ -1,669 +1,982 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificación Profesional | Método Vínculo®</title>
-  <style>
-    :root {
-      --crema: #FAF6F0;
-      --arena: #E8D8C8;
-      --nude: #D8B7A5;
-      --marron: #7A5C4B;
-      --marron-oscuro: #4B352B;
-      --blanco: #FFFFFF;
-      --sombra: 0 18px 45px rgba(75, 53, 43, 0.12);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--crema);
-      color: var(--marron-oscuro);
-      line-height: 1.7;
-    }
-
-    h1, h2, h3 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-weight: 500;
-      line-height: 1.2;
-      color: var(--marron-oscuro);
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    .top-bar {
-      width: 100%;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(250, 246, 240, 0.94);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(122, 92, 75, 0.12);
-    }
-
-    .brand {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.25rem;
-      color: var(--marron-oscuro);
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      border-radius: 999px;
-      padding: 13px 22px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.25s ease;
-      font-size: 0.95rem;
-    }
-
-    .btn-primary {
-      background: var(--marron);
-      color: var(--blanco);
-      box-shadow: 0 12px 25px rgba(122, 92, 75, 0.22);
-    }
-
-    .btn-primary:hover {
-      background: var(--marron-oscuro);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--marron);
-      border: 1px solid rgba(122, 92, 75, 0.32);
-    }
-
-    .btn-secondary:hover { background: var(--arena); }
-
-    .hero {
-      min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 50px;
-      align-items: center;
-      padding: 80px 6%;
-    }
-
-    .hero-content { max-width: 760px; }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.78rem;
-      color: var(--marron);
-      margin-bottom: 18px;
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 5.7vw, 5.1rem);
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      max-width: 650px;
-      margin-bottom: 24px;
-      color: #60483B;
-    }
-
-    .hero-card {
-      background: linear-gradient(145deg, #FFFFFF, #F5EDE4);
-      border-radius: 34px;
-      padding: 36px;
-      box-shadow: var(--sombra);
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
-    }
-
-
-
-    .quote {
-      position: relative;
-      z-index: 1;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 2rem;
-      line-height: 1.25;
-      color: var(--marron-oscuro);
-    }
-
-    .quote span {
-      display: block;
-      margin-top: 18px;
-      font-family: Arial, sans-serif;
-      font-size: 0.95rem;
-      color: var(--marron);
-    }
-
-    .quote  {
-      margin-top: 20px;
-    }
-
-    .section { padding: 85px 6%; }
-    .section-light { background: var(--blanco); }
-
-    .section h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      margin-bottom: 22px;
-      max-width: 880px;
-    }
-
-    .section-intro {
-      max-width: 850px;
-      font-size: 1.1rem;
-      color: #60483B;
-      margin-bottom: 42px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: var(--crema);
-      border-radius: 26px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(75, 53, 43, 0.07);
-    }
-
-    .section-light .card { background: #FBF7F1; }
-
-    .card h3 {
-      font-size: 1.45rem;
-      margin-bottom: 12px;
-    }
-
-    .card p, .card li { color: #60483B; }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .pillar {
-      background: var(--blanco);
-      border: 1px solid rgba(122, 92, 75, 0.12);
-      border-radius: 26px;
-      padding: 26px;
-    }
-
-    .number {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--arena);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--marron-oscuro);
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .modules {
-      display: grid;
-      gap: 16px;
-      max-width: 1050px;
-    }
-
-    .module {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 24px;
-      align-items: start;
-      background: var(--blanco);
-      padding: 24px;
-      border-radius: 24px;
-      border: 1px solid rgba(122, 92, 75, 0.12);
-    }
-
-    .module strong {
-      color: var(--marron);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .module h3 {
-      font-size: 1.35rem;
-      margin-bottom: 8px;
-    }
-
-    ul { padding-left: 20px; margin-top: 8px; }
-
-    .offer {
-      background: linear-gradient(135deg, var(--marron-oscuro), var(--marron));
-      color: var(--blanco);
-      border-radius: 36px;
-      padding: 50px;
-      display: grid;
-      grid-template-columns: 1fr 0.8fr;
-      gap: 36px;
-      align-items: center;
-      box-shadow: var(--sombra);
-    }
-
-    .offer h2, .offer h3 { color: var(--blanco); }
-    .offer p, .offer li { color: rgba(255, 255, 255, 0.86); }
-
-    .price-box {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      border-radius: 28px;
-      padding: 30px;
-    }
-
-    .price {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 3.2rem;
-      margin: 10px 0;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.14);
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .form-wrap {
-      max-width: 920px;
-      margin: 0 auto;
-      background: var(--blanco);
-      border-radius: 34px;
-      padding: 42px;
-      box-shadow: var(--sombra);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--marron-oscuro);
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 15px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(122, 92, 75, 0.22);
-      background: #FFFCF8;
-      font-size: 1rem;
-      color: var(--marron-oscuro);
-      outline: none;
-    }
-
-    input:focus, select:focus, textarea:focus { border-color: var(--marron); }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .full { grid-column: 1 / -1; }
-
-    .payment-box {
-      margin-top: 26px;
-      background: #FBF7F1;
-      border: 1px solid rgba(122, 92, 75, 0.12);
-      border-radius: 24px;
-      padding: 24px;
-    }
-
-    .payment-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .small-note {
-      font-size: 0.88rem;
-      color: #755D4F;
-      margin-top: 14px;
-    }
-
-    .footer {
-      padding: 38px 6%;
-      background: var(--marron-oscuro);
-      color: rgba(255,255,255,0.78);
-      text-align: center;
-    }
-
-    .footer strong { color: var(--blanco); }
-
-    @media (max-width: 900px) {
-      .hero, .offer { grid-template-columns: 1fr; }
-      .grid-3, .pillars { grid-template-columns: 1fr; }
-      .module { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .top-bar { flex-direction: column; gap: 14px; }
-      .nav-actions { width: 100%; justify-content: center; }
-      .hero { padding-top: 55px; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header class="top-bar">
-    <a class="brand" href="index.html">Método Vínculo®</a>
-    <nav class="nav-actions">
-      <a href="index.html" class="btn btn-secondary">Volver al menú principal</a>
-      <a href="#postular" class="btn btn-primary">Solicitar inscripción</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">Formación profesional · Método Vínculo®</p>
-        <h1>Certificación Profesional Método Vínculo®</h1>
-        <p>Una formación especializada para doulas, masajistas, terapeutas, acompañantes perinatales y profesionales del bienestar maternal que desean integrar tacto consciente, regulación emocional y vínculo mamá-bebé en su práctica profesional.</p>
-        <p>Un camino formativo profundo para acompañar desde la presencia, el cuerpo, la calma y la seguridad emocional.</p>
-        <div class="nav-actions">
-          <a href="#postular" class="btn btn-primary">Solicitar inscripción</a>
-          <a href="#contenido" class="btn btn-secondary">Ver programa completo</a>
-        </div>
-      </div>
-
-      <aside class="hero-card">
-        <img src="certificacion2.png" alt="">
-        <p class="quote">“Formar profesionales capaces de acompañar la maternidad desde la calma, el tacto y el vínculo.”<span>Certificación Profesional · Método Vínculo®</span></p>
-      </aside>
-    </section>
-
-    <section class="section section-light">
-      <h2>¿Qué es la Certificación Profesional Método Vínculo®?</h2>
-      <p class="section-intro">Es una formación profesional diseñada para especializar a mujeres y profesionales en bienestar maternal, tacto consciente, vínculo prenatal, masaje infantil, regulación emocional y acompañamiento respetuoso durante el embarazo, posparto y primeros años de maternidad.</p>
-
-      <div class="grid-3">
-        <article class="card">
-          <h3>Especialización profesional</h3>
-          <p>Aprendé a aplicar el método con estructura, criterio, ética y profundidad, integrándolo en sesiones individuales, talleres, acompañamientos o espacios grupales.</p>
-        </article>
-        <article class="card">
-          <h3>Enfoque emocional y corporal</h3>
-          <p>No se trata solo de técnica. La certificación trabaja presencia, sistema nervioso, co-regulación, vínculo, tacto consciente y seguridad emocional.</p>
-        </article>
-        <article class="card">
-          <h3>Modelo de acompañamiento</h3>
-          <p>Recibirás herramientas para diseñar experiencias, sesiones y programas dirigidos a embarazadas, mamás recientes y familias.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Para quién es esta certificación</h2>
-      <p class="section-intro">La certificación está pensada para profesionales y mujeres que desean acompañar la maternidad desde una mirada cálida, consciente y profesional.</p>
-
-      <div class="grid-3">
-        <article class="card">
-          <h3>Profesionales maternales</h3>
-          <ul>
-            <li>Doulas.</li>
-            <li>Asesoras de lactancia.</li>
-            <li>Acompañantes perinatales.</li>
-            <li>Educadoras familiares.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Terapeutas y bienestar</h3>
-          <ul>
-            <li>Masajistas.</li>
-            <li>Terapeutas corporales.</li>
-            <li>Instructoras de yoga prenatal.</li>
-            <li>Profesionales de bienestar femenino.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Emprendedoras</h3>
-          <ul>
-            <li>Mujeres que quieren crear talleres.</li>
-            <li>Profesionales que desean diferenciarse.</li>
-            <li>Personas que quieren trabajar con madres y bebés.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-light">
-      <h2>Los 4 pilares profesionales</h2>
-      <p class="section-intro">La certificación profundiza los pilares oficiales de Método Vínculo® desde una mirada profesional, práctica y aplicable.</p>
-
-      <div class="pillars">
-        <article class="pillar">
-          <div class="number">1</div>
-          <h3>Presencia profesional</h3>
-          <p>Aprender a sostener un espacio seguro, cálido y emocionalmente regulado.</p>
-        </article>
-        <article class="pillar">
-          <div class="number">2</div>
-          <h3>Tacto consciente</h3>
-          <p>Técnicas, ritmo, presión, escucha corporal y contacto respetuoso.</p>
-        </article>
-        <article class="pillar">
-          <div class="number">3</div>
-          <h3>Regulación</h3>
-          <p>Sistema nervioso, co-regulación, respiración, calma y acompañamiento emocional.</p>
-        </article>
-        <article class="pillar">
-          <div class="number">4</div>
-          <h3>Vínculo</h3>
-          <p>Vínculo prenatal, vínculo temprano, apego seguro y rituales emocionales.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="contenido">
-      <h2>Programa completo de la certificación</h2>
-      <p class="section-intro">Una formación estructurada para avanzar desde los fundamentos del método hasta la aplicación profesional.</p>
-
-      <div class="modules">
-        <article class="module"><strong>Módulo 1</strong><div><h3>Fundamentos de Método Vínculo®</h3><p>Origen, filosofía, propósito, posicionamiento profesional y diferencia entre técnica, método y experiencia de acompañamiento.</p></div></article>
-        <article class="module"><strong>Módulo 2</strong><div><h3>Maternidad, emoción y cuerpo</h3><p>Comprensión emocional del embarazo, posparto, cansancio, culpa, miedo, ansiedad maternal y necesidad de sostén.</p></div></article>
-        <article class="module"><strong>Módulo 3</strong><div><h3>Vínculo prenatal</h3><p>Prácticas de conexión durante el embarazo: respiración, manos sobre el vientre, visualización, escucha corporal y rituales prenatales.</p></div></article>
-        <article class="module"><strong>Módulo 4</strong><div><h3>Sistema nervioso y co-regulación</h3><p>Bases simples del sistema nervioso, seguridad emocional, activación, calma, señales corporales y acompañamiento desde la presencia.</p></div></article>
-        <article class="module"><strong>Módulo 5</strong><div><h3>Tacto consciente profesional</h3><p>Calidad del contacto, presión, ritmo, límites, escucha, señales de aceptación, señales de pausa y ética del tacto.</p></div></article>
-        <article class="module"><strong>Módulo 6</strong><div><h3>Masaje infantil consciente</h3><p>Secuencias seguras para piernas, pies, abdomen, pecho, espalda y cierre, siempre desde una mirada vincular y respetuosa.</p></div></article>
-        <article class="module"><strong>Módulo 7</strong><div><h3>Técnicas de calma y regulación</h3><p>Manos de presencia, respiración compartida, contacto contenedor, caricia lenta, círculos en pies y ritual de cierre.</p></div></article>
-        <article class="module"><strong>Módulo 8</strong><div><h3>Acompañamiento en irritabilidad</h3><p>Cómo guiar a madres en momentos de llanto, tensión, sobreestimulación y desborde sin prometer soluciones mágicas.</p></div></article>
-        <article class="module"><strong>Módulo 9</strong><div><h3>Diseño de sesiones y talleres</h3><p>Cómo crear sesiones individuales, talleres grupales, workshops prenatales, encuentros mamá-bebé y experiencias de calma.</p></div></article>
-        <article class="module"><strong>Módulo 10</strong><div><h3>Comunicación profesional y marca personal</h3><p>Cómo comunicar el método, presentar servicios, cuidar el lenguaje, evitar promesas médicas y construir confianza.</p></div></article>
-        <article class="module"><strong>Módulo 11</strong><div><h3>Prácticas supervisadas</h3><p>Ejercicios, observación, casos prácticos, revisión de aplicación y preparación para la evaluación final.</p></div></article>
-        <article class="module"><strong>Módulo 12</strong><div><h3>Evaluación y certificación</h3><p>Entrega de caso práctico, evaluación de comprensión del método y criterios para obtener la certificación profesional.</p></div></article>
-      </div>
-    </section>
-
-    <section class="section section-light">
-      <h2>Duración y modalidad</h2>
-      <p class="section-intro">La certificación está pensada como una formación profunda, flexible y profesional.</p>
-
-      <div class="grid-3">
-        <article class="card">
-          <h3>Duración recomendada</h3>
-          <p>6 meses de formación, con contenido teórico, prácticas, integración y evaluación final.</p>
-        </article>
-        <article class="card">
-          <h3>Carga horaria</h3>
-          <p>Entre 120 y 180 horas aproximadas, incluyendo clases, estudio, prácticas y trabajos de integración.</p>
-        </article>
-        <article class="card">
-          <h3>Modalidad</h3>
-          <p>Online con clases grabadas, encuentros en vivo, material descargable, comunidad privada y prácticas supervisadas.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="offer">
-        <div>
-          <span class="badge">Cupos limitados · Formación profesional</span>
-          <h2>Qué incluye la certificación</h2>
-          <ul>
-            <li>12 módulos formativos.</li>
-            <li>Clases grabadas paso a paso.</li>
-            <li>Encuentros en vivo mensuales.</li>
-            <li>Manual profesional Método Vínculo®.</li>
-            <li>Guías de práctica para sesiones y talleres.</li>
-            <li>Biblioteca de rituales y técnicas.</li>
-            <li>Comunidad privada de alumnas.</li>
-            <li>Prácticas supervisadas.</li>
-            <li>Evaluación final.</li>
-            <li>Certificado profesional al completar requisitos.</li>
-          </ul>
-        </div>
-
-        <div class="price-box">
-          <h3>Inversión profesional</h3>
-          <div class="price">1.497€</div>
-          <p>Precio recomendado para la primera edición profesional.</p>
-          <p><strong>Opción de pago fraccionado:</strong><br>3 pagos de 549€.</p>
-          <a href="#postular" class="btn btn-primary" style="background:#fff;color:#4B352B;margin-top:18px;">Solicitar inscripción</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-light" id="postular">
-      <div class="form-wrap">
-        <h2>Solicitar inscripción</h2>
-        <p class="section-intro">Completá tus datos para postular a la Certificación Profesional Método Vínculo®. Después podrás continuar con el pago de reserva o el pago completo.</p>
-
-        <form id="certificacionForm">
-          <div class="form-grid">
-            <div>
-              <label for="nombre">Nombre y apellido</label>
-              <input type="text" id="nombre" name="nombre" required>
-            </div>
-
-            <div>
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-
-            <div>
-              <label for="telefono">Teléfono / WhatsApp</label>
-              <input type="tel" id="telefono" name="telefono" required>
-            </div>
-
-            <div>
-              <label for="perfil">Perfil profesional</label>
-              <select id="perfil" name="perfil" required>
-                <option value="">Seleccionar</option>
-                <option>Doula</option>
-                <option>Masajista</option>
-                <option>Terapeuta corporal</option>
-                <option>Asesora de lactancia</option>
-                <option>Profesional de salud/bienestar</option>
-                <option>Emprendedora maternal</option>
-                <option>Otro</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="pais">País / ciudad</label>
-              <input type="text" id="pais" name="pais" required>
-            </div>
-
-            <div>
-              <label for="pago">Modalidad de pago preferida</label>
-              <select id="pago" name="pago" required>
-                <option value="">Seleccionar</option>
-                <option>Pago completo 1.497€</option>
-                <option>Pago fraccionado 3 x 549€</option>
-                <option>Quiero hablar antes con Cintia</option>
-              </select>
-            </div>
-
-            <div class="full">
-              <label for="experiencia">Contanos tu experiencia acompañando mujeres, embarazadas, bebés o familias</label>
-              <textarea id="experiencia" name="experiencia" required></textarea>
-            </div>
-
-            <div class="full">
-              <label for="motivacion">¿Por qué querés certificarte en Método Vínculo®?</label>
-              <textarea id="motivacion" name="motivacion" required></textarea>
-            </div>
-          </div>
-
-          <div class="payment-box">
-            <h3>Pago de inscripción</h3>
-            <p>Esta zona está preparada para conectar con tu pasarela de pago. Reemplazá estos enlaces por Stripe, PayPal, Hotmart, WooCommerce o el sistema que uses.</p>
-
-            <div class="payment-actions">
-              <a class="btn btn-primary" href="https://buy.stripe.com/" target="_blank" rel="noopener">Pagar completo 1.497€</a>
-              <a class="btn btn-secondary" href="https://buy.stripe.com/" target="_blank" rel="noopener">Pagar reserva 300€</a>
-              <a class="btn btn-secondary" href="https://www.paypal.com/" target="_blank" rel="noopener">Pagar con PayPal</a>
-              <button class="btn btn-secondary" type="submit">Enviar solicitud sin pagar aún</button>
-            </div>
-
-            <p class="small-note">Nota técnica: para recibir estos datos por email, conectá el formulario a Formspree, Google Forms, MailerLite, WordPress, WooCommerce, un backend propio o tu CRM.</p>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p><strong>Método Vínculo®</strong></p>
-    <p>Certificación profesional en bienestar maternal, tacto consciente y vínculo emocional.</p>
-  </footer>
-
-  <script>
-    document.getElementById("certificacionForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const nombre = document.getElementById("nombre").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const telefono = document.getElementById("telefono").value.trim();
-      const perfil = document.getElementById("perfil").value;
-      const pais = document.getElementById("pais").value.trim();
-      const pago = document.getElementById("pago").value;
-      const experiencia = document.getElementById("experiencia").value.trim();
-      const motivacion = document.getElementById("motivacion").value.trim();
-
-      if (!nombre || !email || !telefono || !perfil || !pais || !pago || !experiencia || !motivacion) {
-        alert("Por favor, completá todos los campos obligatorios.");
-        return;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificación Profesional | Método Vínculo®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --crema: #faf6f0;
+        --arena: #e8d8c8;
+        --nude: #d8b7a5;
+        --marron: #7a5c4b;
+        --marron-oscuro: #4b352b;
+        --blanco: #ffffff;
+        --sombra: 0 18px 45px rgba(75, 53, 43, 0.12);
       }
 
-      alert("Gracias. Tu solicitud está lista para enviarse. Ahora falta conectar este formulario al sistema de tu web.");
-    });
-  </script>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-</body>
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: var(--bg);
+        color: var(--dark);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 500;
+        line-height: 1.1;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .top-bar {
+        width: 100%;
+        padding: 18px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(250, 246, 240, 0.94);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(122, 92, 75, 0.12);
+      }
+
+      .brand {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 34px;
+      }
+
+      .nav-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:16px 30px;
+border-radius:100px;
+background:var(--brown);
+color:var(--white);
+font-size:14px;
+font-weight:500;
+transition:.3s;
+border:none;
+cursor:pointer;
+}
+
+      .btn-primary {
+        background: var(--marron);
+        color: var(--blanco);
+        box-shadow: 0 12px 25px rgba(122, 92, 75, 0.22);
+      }
+
+      .btn-primary:hover {
+        background: var(--marron-oscuro);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--marron);
+        border: 1px solid rgba(122, 92, 75, 0.32);
+      }
+
+      .btn-secondary:hover {
+        background: var(--arena);
+      }
+
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 50px;
+        align-items: center;
+        padding: 80px 6%;
+      }
+
+      .hero-content {
+        max-width: 760px;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.78rem;
+        color: var(--marron);
+        margin-bottom: 18px;
+        font-weight: 700;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.4rem, 5.7vw, 5.1rem);
+        margin-bottom: 24px;
+      }
+
+      .hero p {
+        font-size: 1.15rem;
+        max-width: 650px;
+        margin-bottom: 24px;
+        color: #60483b;
+      }
+
+      .hero-card {
+        background: linear-gradient(145deg, #ffffff, #f5ede4);
+        border-radius: 34px;
+        padding: 36px;
+        box-shadow: var(--sombra);
+        min-height: 520px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quote {
+        position: relative;
+        z-index: 1;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 2rem;
+        line-height: 1.25;
+        color: var(--marron-oscuro);
+      }
+
+      .quote span {
+        display: block;
+        margin-top: 18px;
+        font-family: Arial, sans-serif;
+        font-size: 0.95rem;
+        color: var(--marron);
+      }
+
+      .quote {
+        margin-top: 20px;
+      }
+
+      .section {
+        padding: 85px 6%;
+      }
+      .section-light {
+        background: var(--blanco);
+      }
+
+      .section h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        margin-bottom: 22px;
+        max-width: 880px;
+      }
+
+      .section-intro {
+        max-width: 850px;
+        font-size: 1.1rem;
+        color: #60483b;
+        margin-bottom: 42px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+
+      .card {
+        background: var(--crema);
+        border-radius: 26px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(75, 53, 43, 0.07);
+      }
+
+      .section-light .card {
+        background: #fbf7f1;
+      }
+
+      .card h3 {
+        font-size: 1.45rem;
+        margin-bottom: 12px;
+      }
+
+      .card p,
+      .card li {
+        color: #60483b;
+      }
+
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .pillar {
+        background: var(--blanco);
+        border: 1px solid rgba(122, 92, 75, 0.12);
+        border-radius: 26px;
+        padding: 26px;
+      }
+
+      .number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--arena);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--marron-oscuro);
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+
+      .modules {
+        display: grid;
+        gap: 16px;
+        max-width: 1050px;
+      }
+
+      .module {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 24px;
+        align-items: start;
+        background: var(--blanco);
+        padding: 24px;
+        border-radius: 24px;
+        border: 1px solid rgba(122, 92, 75, 0.12);
+      }
+
+      .module strong {
+        color: var(--marron);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .module h3 {
+        font-size: 1.35rem;
+        margin-bottom: 8px;
+      }
+
+      ul {
+        padding-left: 20px;
+        margin-top: 8px;
+      }
+
+      .offer {
+        background: linear-gradient(
+          135deg,
+          var(--marron-oscuro),
+          var(--marron)
+        );
+        color: var(--blanco);
+        border-radius: 36px;
+        padding: 50px;
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 36px;
+        align-items: center;
+        box-shadow: var(--sombra);
+      }
+
+      .offer h2,
+      .offer h3 {
+        color: var(--blanco);
+      }
+      .offer p,
+      .offer li {
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .price-box {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 28px;
+        padding: 30px;
+      }
+
+      .price {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 3.2rem;
+        margin: 10px 0;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .form-wrap {
+        max-width: 920px;
+        margin: 0 auto;
+        background: var(--blanco);
+        border-radius: 34px;
+        padding: 42px;
+        box-shadow: var(--sombra);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--marron-oscuro);
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 15px 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(122, 92, 75, 0.22);
+        background: #fffcf8;
+        font-size: 1rem;
+        color: var(--marron-oscuro);
+        outline: none;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--marron);
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .payment-box {
+        margin-top: 26px;
+        background: #fbf7f1;
+        border: 1px solid rgba(122, 92, 75, 0.12);
+        border-radius: 24px;
+        padding: 24px;
+      }
+
+      .payment-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .small-note {
+        font-size: 0.88rem;
+        color: #755d4f;
+        margin-top: 14px;
+      }
+
+      .footer {
+        padding: 38px 6%;
+        background: var(--marron-oscuro);
+        color: rgba(255, 255, 255, 0.78);
+        text-align: center;
+      }
+
+      .footer strong {
+        color: var(--blanco);
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .offer {
+          grid-template-columns: 1fr;
+        }
+        .grid-3,
+        .pillars {
+          grid-template-columns: 1fr;
+        }
+        .module {
+          grid-template-columns: 1fr;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .top-bar {
+          flex-direction: column;
+          gap: 14px;
+        }
+        .nav-actions {
+          width: 100%;
+          justify-content: center;
+        }
+        .hero {
+          padding-top: 55px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="top-bar">
+      <a class="brand" href="index.html">Método Vínculo®</a>
+      <nav class="nav-actions">
+        <a href="index.html" class="btn btn-secondary"
+          >Volver al menú principal</a
+        >
+        <a href="#postular" class="btn btn-primary">Solicitar inscripción</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Formación profesional · Método Vínculo®</p>
+          <h1>Certificación Profesional Método Vínculo®</h1>
+          <p>
+            Una formación especializada para doulas, masajistas, terapeutas,
+            acompañantes perinatales y profesionales del bienestar maternal que
+            desean integrar tacto consciente, regulación emocional y vínculo
+            mamá-bebé en su práctica profesional.
+          </p>
+          <p>
+            Un camino formativo profundo para acompañar desde la presencia, el
+            cuerpo, la calma y la seguridad emocional.
+          </p>
+          <div class="nav-actions">
+            <a href="#postular" class="btn btn-primary"
+              >Solicitar inscripción</a
+            >
+            <a href="#contenido" class="btn btn-secondary"
+              >Ver programa completo</a
+            >
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <img src="certificacion2.png" alt="" />
+          <p class="quote">
+            “Formar profesionales capaces de acompañar la maternidad desde la
+            calma, el tacto y el vínculo.”<span
+              >Certificación Profesional · Método Vínculo®</span
+            >
+          </p>
+        </aside>
+      </section>
+
+      <section class="section section-light">
+        <h2>¿Qué es la Certificación Profesional Método Vínculo®?</h2>
+        <p class="section-intro">
+          Es una formación profesional diseñada para especializar a mujeres y
+          profesionales en bienestar maternal, tacto consciente, vínculo
+          prenatal, masaje infantil, regulación emocional y acompañamiento
+          respetuoso durante el embarazo, posparto y primeros años de
+          maternidad.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Especialización profesional</h3>
+            <p>
+              Aprendé a aplicar el método con estructura, criterio, ética y
+              profundidad, integrándolo en sesiones individuales, talleres,
+              acompañamientos o espacios grupales.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Enfoque emocional y corporal</h3>
+            <p>
+              No se trata solo de técnica. La certificación trabaja presencia,
+              sistema nervioso, co-regulación, vínculo, tacto consciente y
+              seguridad emocional.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Modelo de acompañamiento</h3>
+            <p>
+              Recibirás herramientas para diseñar experiencias, sesiones y
+              programas dirigidos a embarazadas, mamás recientes y familias.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Para quién es esta certificación</h2>
+        <p class="section-intro">
+          La certificación está pensada para profesionales y mujeres que desean
+          acompañar la maternidad desde una mirada cálida, consciente y
+          profesional.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Profesionales maternales</h3>
+            <ul>
+              <li>Doulas.</li>
+              <li>Asesoras de lactancia.</li>
+              <li>Acompañantes perinatales.</li>
+              <li>Educadoras familiares.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Terapeutas y bienestar</h3>
+            <ul>
+              <li>Masajistas.</li>
+              <li>Terapeutas corporales.</li>
+              <li>Instructoras de yoga prenatal.</li>
+              <li>Profesionales de bienestar femenino.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Emprendedoras</h3>
+            <ul>
+              <li>Mujeres que quieren crear talleres.</li>
+              <li>Profesionales que desean diferenciarse.</li>
+              <li>Personas que quieren trabajar con madres y bebés.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-light">
+        <h2>Los 4 pilares profesionales</h2>
+        <p class="section-intro">
+          La certificación profundiza los pilares oficiales de Método Vínculo®
+          desde una mirada profesional, práctica y aplicable.
+        </p>
+
+        <div class="pillars">
+          <article class="pillar">
+            <div class="number">1</div>
+            <h3>Presencia profesional</h3>
+            <p>
+              Aprender a sostener un espacio seguro, cálido y emocionalmente
+              regulado.
+            </p>
+          </article>
+          <article class="pillar">
+            <div class="number">2</div>
+            <h3>Tacto consciente</h3>
+            <p>
+              Técnicas, ritmo, presión, escucha corporal y contacto respetuoso.
+            </p>
+          </article>
+          <article class="pillar">
+            <div class="number">3</div>
+            <h3>Regulación</h3>
+            <p>
+              Sistema nervioso, co-regulación, respiración, calma y
+              acompañamiento emocional.
+            </p>
+          </article>
+          <article class="pillar">
+            <div class="number">4</div>
+            <h3>Vínculo</h3>
+            <p>
+              Vínculo prenatal, vínculo temprano, apego seguro y rituales
+              emocionales.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contenido">
+        <h2>Programa completo de la certificación</h2>
+        <p class="section-intro">
+          Una formación estructurada para avanzar desde los fundamentos del
+          método hasta la aplicación profesional.
+        </p>
+
+        <div class="modules">
+          <article class="module">
+            <strong>Módulo 1</strong>
+            <div>
+              <h3>Fundamentos de Método Vínculo®</h3>
+              <p>
+                Origen, filosofía, propósito, posicionamiento profesional y
+                diferencia entre técnica, método y experiencia de
+                acompañamiento.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 2</strong>
+            <div>
+              <h3>Maternidad, emoción y cuerpo</h3>
+              <p>
+                Comprensión emocional del embarazo, posparto, cansancio, culpa,
+                miedo, ansiedad maternal y necesidad de sostén.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 3</strong>
+            <div>
+              <h3>Vínculo prenatal</h3>
+              <p>
+                Prácticas de conexión durante el embarazo: respiración, manos
+                sobre el vientre, visualización, escucha corporal y rituales
+                prenatales.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 4</strong>
+            <div>
+              <h3>Sistema nervioso y co-regulación</h3>
+              <p>
+                Bases simples del sistema nervioso, seguridad emocional,
+                activación, calma, señales corporales y acompañamiento desde la
+                presencia.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 5</strong>
+            <div>
+              <h3>Tacto consciente profesional</h3>
+              <p>
+                Calidad del contacto, presión, ritmo, límites, escucha, señales
+                de aceptación, señales de pausa y ética del tacto.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 6</strong>
+            <div>
+              <h3>Masaje infantil consciente</h3>
+              <p>
+                Secuencias seguras para piernas, pies, abdomen, pecho, espalda y
+                cierre, siempre desde una mirada vincular y respetuosa.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 7</strong>
+            <div>
+              <h3>Técnicas de calma y regulación</h3>
+              <p>
+                Manos de presencia, respiración compartida, contacto contenedor,
+                caricia lenta, círculos en pies y ritual de cierre.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 8</strong>
+            <div>
+              <h3>Acompañamiento en irritabilidad</h3>
+              <p>
+                Cómo guiar a madres en momentos de llanto, tensión,
+                sobreestimulación y desborde sin prometer soluciones mágicas.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 9</strong>
+            <div>
+              <h3>Diseño de sesiones y talleres</h3>
+              <p>
+                Cómo crear sesiones individuales, talleres grupales, workshops
+                prenatales, encuentros mamá-bebé y experiencias de calma.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 10</strong>
+            <div>
+              <h3>Comunicación profesional y marca personal</h3>
+              <p>
+                Cómo comunicar el método, presentar servicios, cuidar el
+                lenguaje, evitar promesas médicas y construir confianza.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 11</strong>
+            <div>
+              <h3>Prácticas supervisadas</h3>
+              <p>
+                Ejercicios, observación, casos prácticos, revisión de aplicación
+                y preparación para la evaluación final.
+              </p>
+            </div>
+          </article>
+          <article class="module">
+            <strong>Módulo 12</strong>
+            <div>
+              <h3>Evaluación y certificación</h3>
+              <p>
+                Entrega de caso práctico, evaluación de comprensión del método y
+                criterios para obtener la certificación profesional.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-light">
+        <h2>Duración y modalidad</h2>
+        <p class="section-intro">
+          La certificación está pensada como una formación profunda, flexible y
+          profesional.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Duración recomendada</h3>
+            <p>
+              6 meses de formación, con contenido teórico, prácticas,
+              integración y evaluación final.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Carga horaria</h3>
+            <p>
+              Entre 120 y 180 horas aproximadas, incluyendo clases, estudio,
+              prácticas y trabajos de integración.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Modalidad</h3>
+            <p>
+              Online con clases grabadas, encuentros en vivo, material
+              descargable, comunidad privada y prácticas supervisadas.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="offer">
+          <div>
+            <span class="badge">Cupos limitados · Formación profesional</span>
+            <h2>Qué incluye la certificación</h2>
+            <ul>
+              <li>12 módulos formativos.</li>
+              <li>Clases grabadas paso a paso.</li>
+              <li>Encuentros en vivo mensuales.</li>
+              <li>Manual profesional Método Vínculo®.</li>
+              <li>Guías de práctica para sesiones y talleres.</li>
+              <li>Biblioteca de rituales y técnicas.</li>
+              <li>Comunidad privada de alumnas.</li>
+              <li>Prácticas supervisadas.</li>
+              <li>Evaluación final.</li>
+              <li>Certificado profesional al completar requisitos.</li>
+            </ul>
+          </div>
+
+          <div class="price-box">
+            <h3>Inversión profesional</h3>
+            <div class="price">1.497€</div>
+            <p>Precio recomendado para la primera edición profesional.</p>
+            <p>
+              <strong>Opción de pago fraccionado:</strong><br />3 pagos de 549€.
+            </p>
+            <a
+              href="#postular"
+              class="btn btn-primary"
+              style="background: #fff; color: #4b352b; margin-top: 18px"
+              >Solicitar inscripción</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light" id="postular">
+        <div class="form-wrap">
+          <h2>Solicitar inscripción</h2>
+          <p class="section-intro">
+            Completá tus datos para postular a la Certificación Profesional
+            Método Vínculo®. Después podrás continuar con el pago de reserva o
+            el pago completo.
+          </p>
+
+          <form id="certificacionForm">
+            <div class="form-grid">
+              <div>
+                <label for="nombre">Nombre y apellido</label>
+                <input type="text" id="nombre" name="nombre" required />
+              </div>
+
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div>
+                <label for="telefono">Teléfono / WhatsApp</label>
+                <input type="tel" id="telefono" name="telefono" required />
+              </div>
+
+              <div>
+                <label for="perfil">Perfil profesional</label>
+                <select id="perfil" name="perfil" required>
+                  <option value="">Seleccionar</option>
+                  <option>Doula</option>
+                  <option>Masajista</option>
+                  <option>Terapeuta corporal</option>
+                  <option>Asesora de lactancia</option>
+                  <option>Profesional de salud/bienestar</option>
+                  <option>Emprendedora maternal</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="pais">País / ciudad</label>
+                <input type="text" id="pais" name="pais" required />
+              </div>
+
+              <div>
+                <label for="pago">Modalidad de pago preferida</label>
+                <select id="pago" name="pago" required>
+                  <option value="">Seleccionar</option>
+                  <option>Pago completo 1.497€</option>
+                  <option>Pago fraccionado 3 x 549€</option>
+                  <option>Quiero hablar antes con Cintia</option>
+                </select>
+              </div>
+
+              <div class="full">
+                <label for="experiencia"
+                  >Contanos tu experiencia acompañando mujeres, embarazadas,
+                  bebés o familias</label
+                >
+                <textarea
+                  id="experiencia"
+                  name="experiencia"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="full">
+                <label for="motivacion"
+                  >¿Por qué querés certificarte en Método Vínculo®?</label
+                >
+                <textarea id="motivacion" name="motivacion" required></textarea>
+              </div>
+            </div>
+
+            <div class="payment-box">
+              <h3>Pago de inscripción</h3>
+              <p>
+                Esta zona está preparada para conectar con tu pasarela de pago.
+                Reemplazá estos enlaces por Stripe, PayPal, Hotmart, WooCommerce
+                o el sistema que uses.
+              </p>
+
+              <div class="payment-actions">
+                <a
+                  class="btn btn-primary"
+                  href="https://buy.stripe.com/"
+                  target="_blank"
+                  rel="noopener"
+                  >Pagar completo 1.497€</a
+                >
+                <a
+                  class="btn btn-secondary"
+                  href="https://buy.stripe.com/"
+                  target="_blank"
+                  rel="noopener"
+                  >Pagar reserva 300€</a
+                >
+                <a
+                  class="btn btn-secondary"
+                  href="https://www.paypal.com/"
+                  target="_blank"
+                  rel="noopener"
+                  >Pagar con PayPal</a
+                >
+                <button class="btn btn-secondary" type="submit">
+                  Enviar solicitud sin pagar aún
+                </button>
+              </div>
+
+              <p class="small-note">
+                Nota técnica: para recibir estos datos por email, conectá el
+                formulario a Formspree, Google Forms, MailerLite, WordPress,
+                WooCommerce, un backend propio o tu CRM.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p><strong>Método Vínculo®</strong></p>
+      <p>
+        Certificación profesional en bienestar maternal, tacto consciente y
+        vínculo emocional.
+      </p>
+    </footer>
+
+    <script>
+      document
+        .getElementById("certificacionForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nombre = document.getElementById("nombre").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const telefono = document.getElementById("telefono").value.trim();
+          const perfil = document.getElementById("perfil").value;
+          const pais = document.getElementById("pais").value.trim();
+          const pago = document.getElementById("pago").value;
+          const experiencia = document
+            .getElementById("experiencia")
+            .value.trim();
+          const motivacion = document.getElementById("motivacion").value.trim();
+
+          if (
+            !nombre ||
+            !email ||
+            !telefono ||
+            !perfil ||
+            !pais ||
+            !pago ||
+            !experiencia ||
+            !motivacion
+          ) {
+            alert("Por favor, completá todos los campos obligatorios.");
+            return;
+          }
+
+          alert(
+            "Gracias. Tu solicitud está lista para enviarse. Ahora falta conectar este formulario al sistema de tu web.",
+          );
+        });
+    </script>
+  </body>
 </html>

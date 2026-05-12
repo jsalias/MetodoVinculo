@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 
 *{
@@ -813,7 +813,107 @@ font-size:36px;
     color: white;
 }
 
-.floating-card a:hover{
+/* =========================
+WHATSAPP FLOAT
+========================= */
+
+.whatsapp-float{
+position:fixed;
+right:22px;
+bottom:22px;
+width:65px;
+height:65px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,.18);
+z-index:9999;
+transition:.3s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.08);
+background:#1ebe5d;
+}
+
+/* =========================
+FOOTER NUEVO
+========================= */
+
+.footer-content{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+align-items:flex-start;
+}
+
+.footer-column h4{
+font-size:28px;
+margin-bottom:18px;
+font-family:'Cormorant Garamond',serif;
+}
+
+.footer-column p,
+.footer-column a{
+font-size:14px;
+opacity:.8;
+line-height:1.9;
+display:block;
+transition:.3s;
+}
+
+.footer-column a:hover{
+opacity:1;
+color:var(--beige);
+}
+
+.socials{
+display:flex;
+gap:14px;
+margin-top:20px;
+}
+
+.socials a{
+width:42px;
+height:42px;
+border:1px solid rgba(255,255,255,.2);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+transition:.3s;
+}
+
+.socials a:hover{
+background:var(--beige);
+color:var(--dark);
+transform:translateY(-3px);
+}
+
+.footer-bottom{
+margin-top:40px;
+padding-top:25px;
+border-top:1px solid rgba(255,255,255,.1);
+text-align:center;
+font-size:13px;
+opacity:.7;
+}
+
+@media(max-width:768px){
+
+.footer-content{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.socials{
+justify-content:center;
+}
 
 }
 
@@ -1170,16 +1270,74 @@ Contactar
 
 <footer>
 
-<div class="container footer-content">
+<div class="container">
 
-<div>
-<div class="logo">Método Vínculo®</div>
-<p>Calma y bienestar desde el tacto consciente.</p>
+<div class="footer-content">
+
+<div class="footer-column">
+
+<div class="logo">
+Método Vínculo®
 </div>
 
 <p>
-© 2026 Método Vínculo®
+Calma, conexión y bienestar desde el tacto consciente para mamás y bebés.
 </p>
+
+<div class="socials">
+
+<a href="https://instagram.com/" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://facebook.com/" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://youtube.com/" target="_blank">
+<i class="fab fa-youtube"></i>
+</a>
+
+<a href="https://tiktok.com/" target="_blank">
+<i class="fab fa-tiktok"></i>
+</a>
+
+</div>
+
+</div>
+
+<div class="footer-column">
+
+<h4>Explorar</h4>
+
+<a href="#metodo">El método</a>
+<a href="#curso">Curso</a>
+<a href="#sobre">Sobre mí</a>
+<a href="#lead-magnet">Guía gratuita</a>
+<a href="#Certificacion">Certificación</a>
+<a href="#contacto">Contacto</a>
+
+</div>
+
+<div class="footer-column">
+
+<h4>Contacto</h4>
+
+<p>Email: contacto@metodovinculo.com</p>
+
+<p>WhatsApp: +34 600 000 000</p>
+
+<p>
+Atención online para España y Latinoamérica.
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Método Vínculo® — Todos los derechos reservados.
+</div>
 
 </div>
 
@@ -1300,6 +1458,14 @@ this.reset();
 });
 
 </script>
+<a 
+href="https://wa.me/34600000000" 
+class="whatsapp-float" 
+target="_blank"
+aria-label="WhatsApp"
+>
+<i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
