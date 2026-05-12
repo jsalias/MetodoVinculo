@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso Calma y Vínculo | Método Vínculo®</title>
+  <style>
+    :root{
+      --bg:#FAF8F4;
+      --cream:#F5EFE6;
+      --soft:#EFE4D6;
+      --beige:#D8C3A5;
+
+      --brown:#A47551;
+      --brown-hover:#8C6245;
+
+      --dark:#4A3528;
+      --text:#6B5547;
+
+      --white:#ffffff;
+      --border:#E8DCCF;
+
+      --shadow:0 15px 40px rgba(74,53,40,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .top-bar {
+      width: 100%;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 246, 240, 0.94);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(122, 92, 75, 0.12);
+    }
+
+    .brand {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.25rem;
+      color: var(--dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: var(--white);
+      box-shadow: 0 12px 25px rgba(122, 92, 75, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--brown);
+      border: 1px solid rgba(122, 92, 75, 0.32);
+    }
+
+    .btn-secondary:hover { background: var(--soft); }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+      padding: 50px 6%;
+    }
+
+    .hero-content { max-width: 720px; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.78rem;
+      color: var(--brown);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5.4rem);
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 620px;
+      margin-bottom: 24px;
+      color: #60483B;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, #FFFFFF, #F5EDE4);
+      border-radius: 34px;
+      padding: 36px;
+      box-shadow: var(--sombra);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+
+    .quote {
+      position: relative;
+      z-index: 1;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 4rem;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--dark);
+      margin-top: 10px;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+    
+    }
+
+    .section { padding: 85px 6%; }
+
+    .section-light { background: var(--white); }
+
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 22px;
+      max-width: 850px;
+    }
+
+    .section-intro {
+      max-width: 820px;
+      font-size: 1.1rem;
+      color: #60483B;
+      margin-bottom: 42px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg);
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(75, 53, 43, 0.07);
+    }
+
+    .section-light .card { background: var(--cream); }
+
+    .card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .card p, .card li { color: #60483B; }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .pillar {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 26px;
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .modules {
+      display: grid;
+      gap: 16px;
+      max-width: 980px;
+    }
+
+    .module {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      align-items: start;
+      background: var(--white);
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+    }
+
+    .module strong {
+      color: var(--brown);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .module h3 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .offer {
+      background: linear-gradient(135deg, var(--dark), var(--brown));
+      color: var(--white);
+      border-radius: 36px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+      box-shadow: var(--sombra);
+    }
+
+    .offer h2, .offer h3 { color: var(--white); }
+    .offer p, .offer li { color: rgba(255, 255, 255, 0.86); }
+
+    .price-box {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 28px;
+      padding: 30px;
+    }
+
+    .price {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 3.2rem;
+      margin: 10px 0;
+    }
+
+    .form-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 34px;
+      padding: 42px;
+      box-shadow: var(--sombra);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(122, 92, 75, 0.22);
+      background: var(--white);
+      font-size: 1rem;
+      color: var(--dark);
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus { border-color: var(--brown); }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .payment-box {
+      margin-top: 26px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .payment-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .small-note {
+      font-size: 0.88rem;
+      color: #755D4F;
+      margin-top: 14px;
+    }
+
+    .footer {
+      padding: 38px 6%;
+      background: var(--dark);
+      color: rgba(255,255,255,0.78);
+      text-align: center;
+    }
+
+    .footer strong { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .hero, .offer { grid-template-columns: 1fr; }
+      .grid-3, .pillars { grid-template-columns: 1fr; }
+      .module { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .top-bar { flex-direction: column; gap: 14px; }
+      .nav-actions { width: 100%; justify-content: center; }
+      .hero { padding-top: 55px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="top-bar">
+    <a class="brand" href="index.html">Método Vínculo®</a>
+    <nav class="nav-actions">
+      <a href="index.html" class="btn btn-secondary">Volver al menú principal</a>
+      <a href="#contratar" class="btn btn-primary">Contratar curso</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Curso online · Método Vínculo®</p>
+        <h1>Calma y Vínculo</h1>
+        <p>Bienestar, tacto consciente y conexión emocional para acompañar a tu bebé desde la calma, la presencia y la seguridad.</p>
+        <p>Un curso creado para embarazadas y mamás recientes que desean aprender herramientas simples, amorosas y profundas para crear momentos de conexión con su bebé.</p>
+        <div class="nav-actions">
+          <a href="#contratar" class="btn btn-primary">Quiero contratarlo</a>
+          <a href="#contenido" class="btn btn-secondary">Ver contenido del curso</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <video autoplay muted loop playsinline width="600px">
+<source src="videocursocalma.mp4" type="video/mp4">
+</video>
+        <p class="quote">“No se trata de hacerlo perfecto. Se trata de estar presente.”<span>Curso Calma y Vínculo · Método Vínculo®</span></p>
+      </aside>
+    </section>
+
+    <section class="section section-light">
+      <h2>¿Qué es Calma y Vínculo?</h2>
+      <p class="section-intro">Calma y Vínculo es el primer curso online de Método Vínculo®. Está pensado para acompañar a mujeres durante el embarazo, el posparto y los primeros meses de maternidad a través del tacto consciente, la respiración, la regulación emocional y pequeños rituales de conexión.</p>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Para embarazadas</h3>
+          <p>Aprenderás a crear momentos de conexión prenatal, escuchar tu cuerpo, respirar con presencia y comenzar a construir vínculo antes del nacimiento.</p>
+        </article>
+        <article class="card">
+          <h3>Para mamás recientes</h3>
+          <p>Descubrirás herramientas para acompañar irritabilidad, llanto, sobreestimulación y momentos de cansancio desde la calma y el contacto seguro.</p>
+        </article>
+        <article class="card">
+          <h3>Para crear vínculo</h3>
+          <p>El curso te guía a transformar momentos cotidianos en rituales de presencia, seguridad emocional y comunicación afectiva con tu bebé.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Los 4 pilares del curso</h2>
+      <p class="section-intro">El curso está construido sobre los pilares oficiales de Método Vínculo®.</p>
+
+      <div class="pillars">
+        <article class="pillar"><div class="number">1</div><h3>Presencia</h3><p>Antes de tocar, conectar. Respirar, observar y bajar el ritmo.</p></article>
+        <article class="pillar"><div class="number">2</div><h3>Tacto consciente</h3><p>Las manos como una herramienta de calma, seguridad y conexión.</p></article>
+        <article class="pillar"><div class="number">3</div><h3>Regulación</h3><p>Acompañar el sistema nervioso desde el contacto, la voz y la respiración.</p></article>
+        <article class="pillar"><div class="number">4</div><h3>Vínculo</h3><p>Crear conexión emocional en pequeños momentos cotidianos.</p></article>
+      </div>
+    </section>
+
+    <section class="section section-light" id="contenido">
+      <h2>Contenido del curso</h2>
+      <p class="section-intro">Una estructura simple, profunda y práctica para integrar el método en la vida diaria.</p>
+
+      <div class="modules">
+        <article class="module"><strong>Módulo 1</strong><div><h3>Bienvenida al Método Vínculo®</h3><p>Presentación del método, filosofía del curso, cómo avanzar y cómo crear una experiencia de calma sin exigencia ni perfección.</p></div></article>
+        <article class="module"><strong>Módulo 2</strong><div><h3>Vínculo prenatal</h3><p>Prácticas para embarazadas: manos sobre el vientre, respiración, escucha corporal, conexión emocional y rituales simples antes del nacimiento.</p></div></article>
+        <article class="module"><strong>Módulo 3</strong><div><h3>Presencia antes del tacto</h3><p>Cómo regularte primero vos, crear pausa, observar el estado emocional y preparar tu cuerpo antes de tocar o acompañar a tu bebé.</p></div></article>
+        <article class="module"><strong>Módulo 4</strong><div><h3>Bases del tacto consciente</h3><p>Ritmo, presión, señales del bebé, manos seguras, contacto respetuoso y formas de tocar sin invadir ni sobreestimular.</p></div></article>
+        <article class="module"><strong>Módulo 5</strong><div><h3>Técnicas de calma</h3><p>Manos de presencia, respiración compartida, contacto contenedor, caricia lenta y círculos suaves en los pies.</p></div></article>
+        <article class="module"><strong>Módulo 6</strong><div><h3>Acompañar momentos de irritabilidad</h3><p>Qué hacer cuando el bebé está inquieto, cómo evitar sobreestimular y cómo acompañar sin buscar controlar el llanto.</p></div></article>
+        <article class="module"><strong>Módulo 7</strong><div><h3>Rutinas de calma</h3><p>Rituales para antes de dormir, después del baño, momentos de cansancio, conexión diaria y cierre emocional.</p></div></article>
+        <article class="module"><strong>Módulo 8</strong><div><h3>Integración final</h3><p>Cómo adaptar el método a tu maternidad, crear tu propio ritual y continuar practicando desde la confianza.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="offer">
+        <div>
+          <h2>Qué incluye</h2>
+          <ul>
+            <li>Curso online grabado paso a paso.</li>
+            <li>Videos breves, claros y prácticos.</li>
+            <li>PDF de acompañamiento.</li>
+            <li>Prácticas de respiración y tacto consciente.</li>
+            <li>Rutinas para embarazo, posparto y primeros meses.</li>
+            <li>Acceso desde móvil, tablet u ordenador.</li>
+          </ul>
+        </div>
+
+        <div class="price-box">
+          <h3>Inversión inicial recomendada</h3>
+          <div class="price">97€</div>
+          <p>Precio sugerido para el lanzamiento inicial. Puedes modificarlo cuando definas el precio final.</p>
+          <a href="#contratar" class="btn btn-primary" style="background:#fff;color:#4B352B;margin-top:18px;">Reservar mi plaza</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="contratar">
+      <div class="form-wrap">
+        <h2>Contratar Calma y Vínculo</h2>
+        <p class="section-intro">Completá tus datos para reservar tu plaza. Después podrás continuar con el pago.</p>
+
+        <form id="cursoForm">
+          <div class="form-grid">
+            <div>
+              <label for="nombre">Nombre y apellido</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div>
+              <label for="telefono">Teléfono / WhatsApp</label>
+              <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div>
+              <label for="etapa">¿En qué etapa estás?</label>
+              <select id="etapa" name="etapa" required>
+                <option value="">Seleccionar</option>
+                <option>Embarazo</option>
+                <option>Posparto reciente</option>
+                <option>Mamá con bebé de 0 a 6 meses</option>
+                <option>Mamá con bebé de 6 a 24 meses</option>
+                <option>Profesional maternal</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="mensaje">Contanos brevemente qué buscás con el curso</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Ejemplo: quiero aprender a calmar a mi bebé, crear vínculo, prepararme durante el embarazo..."></textarea>
+            </div>
+          </div>
+
+          <div class="payment-box">
+            <h3>Pago del curso</h3>
+            <p>Esta zona está preparada para conectar con tu pasarela de pago. Podés reemplazar los enlaces por Stripe, PayPal, Hotmart, WooCommerce o cualquier sistema que uses.</p>
+
+            <div class="payment-actions">
+              <a class="btn btn-primary" href="https://buy.stripe.com/" target="_blank" rel="noopener">Pagar con tarjeta</a>
+              <a class="btn btn-secondary" href="https://www.paypal.com/" target="_blank" rel="noopener">Pagar con PayPal</a>
+              <button class="btn btn-secondary" type="submit">Enviar datos sin pagar aún</button>
+            </div>
+
+            <p class="small-note">Nota técnica: para que el formulario llegue por email, debe conectarse a Formspree, Google Forms, un backend propio o el sistema de formularios de tu web.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Método Vínculo®</strong></p>
+    <p>Calma, conexión y bienestar desde el tacto consciente.</p>
+  </footer>
+
+  <script>
+    document.getElementById("cursoForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const etapa = document.getElementById("etapa").value;
+
+      if (!nombre || !email || !telefono || !etapa) {
+        alert("Por favor, completá los campos obligatorios.");
+        return;
+      }
+
+      alert("Gracias. Tus datos están listos para enviarse. Ahora falta conectar este formulario al sistema de tu web.");
+    });
+  </script>
+
+</body>
+</html>
