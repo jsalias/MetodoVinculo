@@ -711,6 +711,103 @@ display:block;
 object-position:center 18%;
 }
 
+.lead-magnet{
+background:var(--bg);
+}
+
+.lead-magnet-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.lead-magnet h2{
+font-size:68px;
+margin-bottom:25px;
+}
+
+.lead-magnet-preview{
+display:flex;
+justify-content:center;
+}
+
+.pdf-card{
+width:380px;
+height:520px;
+background:white;
+border-radius:28px;
+padding:18px;
+box-shadow:var(--shadow);
+transform:rotate(2deg);
+}
+
+.pdf-cover{
+width:100%;
+height:100%;
+border-radius:22px;
+background:linear-gradient(135deg, rgba(245,239,230,.9), rgba(250,248,244,.96)), url("masajemama.png");
+background-size:cover;
+background-position:center;
+padding:45px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.pdf-cover h3{
+font-size:48px;
+color:var(--dark);
+}
+
+.pdf-cover p{
+font-size:15px;
+color:var(--text);
+}
+
+@media(max-width:768px){
+
+.lead-magnet-grid{
+grid-template-columns:1fr;
+gap:45px;
+}
+
+.lead-magnet h2{
+font-size:48px;
+}
+
+.pdf-card{
+width:100%;
+max-width:340px;
+height:470px;
+}
+
+.pdf-cover h3{
+font-size:40px;
+}
+
+}
+
+@media(max-width:480px){
+
+.lead-magnet h2{
+font-size:42px;
+}
+
+.pdf-card{
+height:430px;
+}
+
+.pdf-cover{
+padding:34px;
+}
+
+.pdf-cover h3{
+font-size:36px;
+}
+
+}
+
 </style>
 </head>
 
@@ -728,6 +825,7 @@ Método Vínculo®
 <a href="#metodo">El método</a>
 <a href="#curso">Curso</a>
 <a href="#sobre">Sobre mí</a>
+<a href="#lead-magnet">Guía gratis</a>
 <a href="#Certificacion">Certificación</a>
 <a href="#contacto">Contacto</a>
 </nav>
@@ -763,6 +861,9 @@ Método Vínculo® acompaña a mamás, embarazadas y bebés a través del masaje
 <button class="btn abrirModal">
 Descubrir Calma y Vínculo
 </button>
+
+
+
 
 <a href="#metodo" class="btn btn-outline">
 Conocer el método
@@ -802,14 +903,116 @@ El método
 </div>
 
 <h2>
-Una forma de acompañar la maternidad desde el cuerpo y la calma.
+Una forma de acompañar la maternidad desde el cuerpo, la calma y la conexión.
 </h2>
 
 <p>
-Método Vínculo® nace desde el masaje, la reflexología y el tacto consciente.
+Método Vínculo® nace desde el masaje, la reflexología y el tacto consciente como una manera de acompañar emocionalmente a mamás, embarazadas y bebés durante una de las etapas más sensibles de la vida.
 </p>
 
+<br><br>
+
+<p>
+A través del contacto respetuoso y consciente, buscamos crear espacios de calma, seguridad y bienestar donde el cuerpo pueda relajarse y la conexión emocional pueda fortalecerse naturalmente.
+</p>
+
+<br><br>
+
+<p>
+Cada experiencia dentro de Método Vínculo® está pensada para ayudar a reducir el estrés, mejorar el descanso, favorecer la regulación emocional y generar momentos reales de presencia entre mamá y bebé.
+</p>
+
+<div class="cards">
+
+<div class="card fade">
+<div class="card-number">01</div>
+<h3>Calma</h3>
+<p>
+Técnicas suaves orientadas a disminuir el estrés y favorecer estados de relajación profunda.
+</p>
 </div>
+
+<div class="card fade">
+<div class="card-number">02</div>
+<h3>Conexión</h3>
+<p>
+El tacto consciente como herramienta para fortalecer el vínculo emocional entre mamá y bebé.
+</p>
+</div>
+
+<div class="card fade">
+<div class="card-number">03</div>
+<h3>Bienestar</h3>
+<p>
+Acompañamiento corporal y emocional durante el embarazo y la maternidad temprana.
+</p>
+</div>
+
+<div class="card fade">
+<div class="card-number">04</div>
+<h3>Presencia</h3>
+<p>
+Crear pausas reales para habitar el momento con más suavidad, escucha y conciencia.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section lead-magnet" id="lead-magnet">
+
+  <div class="container lead-magnet-grid">
+
+    <div class="lead-magnet-content fade">
+
+      <div class="eyebrow">
+        Lead Magnet gratuito
+      </div>
+
+      <h2>
+        Descargá gratis la guía “El tacto que calma, la conexión que sana”.
+      </h2>
+
+      <p class="lead">
+        Una guía esencial sobre tacto consciente para embarazadas y madres recientes.
+        Ideal para empezar a crear calma, conexión y bienestar desde casa.
+      </p>
+
+      <div class="checks">
+        <div class="check"><span>✓</span> Tacto consciente para mamá y bebé</div>
+        <div class="check"><span>✓</span> Técnicas simples de calma</div>
+        <div class="check"><span>✓</span> Bienestar emocional durante la maternidad</div>
+      </div>
+
+      <button class="btn abrirModal">
+        Descargar guía gratuita
+      </button>
+
+    </div>
+
+    <div class="lead-magnet-preview fade">
+
+      <div class="pdf-card">
+        <div class="pdf-cover">
+          <div class="eyebrow">Bienestar maternal</div>
+
+          <h3>
+            El tacto que calma,<br>
+            la conexión que sana
+          </h3>
+
+          <p>
+            Guía gratuita de Método Vínculo®
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
@@ -991,8 +1194,6 @@ Escribinos
 
 <input type="email" placeholder="Tu email" required>
 
-<input type="text" placeholder="Tu teléfono">
-
 <textarea placeholder="Tu mensaje"></textarea>
 
 <button class="btn" type="submit">
@@ -1051,9 +1252,35 @@ document.querySelector('.modal-form').addEventListener('submit', function(e){
 
 e.preventDefault();
 
-alert('Formulario de demostración. Para guardar datos necesitás PHP y MySQL.');
+const nombre = this.querySelector('input[type="text"]').value;
+const email = this.querySelector('input[type="email"]').value;
+
+if(nombre === '' || email === ''){
+alert('Completá los campos obligatorios');
+return;
+}
+
+/* DESCARGAR PDF */
+
+const link = document.createElement('a');
+
+link.href = 'guia-bienestar-maternal.pdf';
+
+link.download = 'Guia-Bienestar-Maternal.pdf';
+
+document.body.appendChild(link);
+
+link.click();
+
+document.body.removeChild(link);
+
+/* MENSAJE */
+
+alert('Gracias. Tu guía se está descargando.');
 
 modal.classList.remove('show');
+
+this.reset();
 
 });
 
